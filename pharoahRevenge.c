@@ -6,6 +6,7 @@
 
 int main () {
 int playAgain = 1;
+
 while (playAgain == 1) {
 int currentRoom = KINGS_CHAMBER;
 int timeLeft = MAX_TIME;
@@ -61,8 +62,9 @@ if(choice == 1){
     } 
 
 // timeleft,  before starting Dark Corridor
-
+//There's } missing but not sure where, if you have other inputs please lmk
    
+
 
 
 
