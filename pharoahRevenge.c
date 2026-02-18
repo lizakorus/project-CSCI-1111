@@ -43,28 +43,118 @@ while (!gameOver && timeLeft > 0) {
     break;    
 } 
 
+		// This is where DARK_CORRDIOR code goes.
 
-if (gameOver || timeLeft == 0){
-    printf("You Died\n");
+case EXIT_CHAMBER: {
 
-}
-int choice;
-printf("Play again? 1 = yes 0 = no\n");
-scanf("%d", &choice);
+    int choice;
 
-if(choice == 1){
-    playAgain = 1;
-} else {
-    playAgain = 0;
-    printf("Goodbye\n");     
+    printf("\nExit Chamber:\n");
+
+    // Ask if player wants to search for the Ancient Key
+    printf("Search for Ancient Key? 1 = yes 0 = no\n");
+    scanf("%d", &choice);
+
+    // If player does not search, they die
+    if (choice == 0) {
+        printf("You are trapped in the tomb.\n");
+        gameOver = 1;
+        break;
     }
-    return 0;   
-    } 
 
-// timeleft,  before starting Dark Corridor
-//There's } missing but not sure where, if you have other inputs please lmk
-   
+    printf("You found the Ancient Key!\n");
 
+    // Player gets 3 attempts to solve lever puzzle
+    int attempts = 3;
+    int solved = 0;  // 0 = not solved, 1 = solved
 
+    printf("\nFive ancient levers stand before you.\n");
+    printf("The hint reads: 'The door opens with the number 26.'\n");
 
+    // Loop continues while player still has attempts
+    while (attempts > 0 && solved == 0) {
 
+        int lever1, lever2, lever3, lever4, lever5;
+
+        printf("\nYou have %d attempts remaining.\n", attempts);
+        printf("Set each lever (1 = up, 0 = down)\n");
+
+        printf("Lever 1: ");
+        scanf("%d", &lever1);
+
+        printf("Lever 2: ");
+        scanf("%d", &lever2);
+
+        printf("Lever 3: ");
+        scanf("%d", &lever3);
+
+        printf("Lever 4: ");
+        scanf("%d", &lever4);
+
+        printf("Lever 5: ");
+        scanf("%d", &lever5);
+
+        // Check if sequence matches 11010 (26 in binary)
+        if (lever1 == 1 &&
+            lever2 == 1 &&
+            lever3 == 0 &&
+            lever4 == 1 &&
+            lever5 == 0) {
+
+            solved = 1;  // Puzzle solved
+        }
+        else {
+            attempts--;  // Remove one attempt
+            printf("\nThe levers grind incorrectly...\n");
+        }
+    }
+
+    // If puzzle solved
+    if (solved == 1) {
+
+        printf("\nThe levers shift into place.\n");
+        printf("A hidden stone door appears.\n");
+
+        printf("Use Ancient Key to unlock it? 1 = yes 0 = no\n");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("You unlock the door.\n");
+            printf("You escape!\n");
+        }
+        else {
+            printf("You hesitate. Time runs out.\n");
+            printf("You Died\n");
+        }
+    }
+    else {
+        // Player failed all attempts
+        printf("\nYou failed all attempts.\n");
+        printf("The Pharaoh awakens!\n");
+        printf("You Died\n");
+    }
+
+    // End the round
+    gameOver = 1;
+    break;
+}
+// If timer runs out
+if (timeLeft == 0) {
+    printf("Time has run out.\n");
+    printf("You Died.\n");
+}
+
+// Ask player if they want to replay
+int replayChoice;
+printf("\nPlay again? 1 = yes 0 = no\n");
+scanf("%d", &replayChoice);
+
+if (replayChoice == 1) {
+    playAgain = 1;  // Restart the game
+}
+else {
+    playAgain = 0;  // Exit the game
+    printf("Goodbye\n");
+}
+return 0;
+    }
