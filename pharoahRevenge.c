@@ -42,8 +42,46 @@ while (!gameOver && timeLeft > 0) {
     }
     break;    
 } 
+	// =========== ROOM 2 - DARK CORRIDOR ============
+    case DARK_CORRIDOR: {
+        int choice;
+        int stayInRoom = 1;
 
-		// This is where DARK_CORRDIOR code goes.
+		// stayInRoom allows to replay if you fall into the pit
+        while (stayInRoom) {
+            printf("\nYou are in the Dark Corridor.\nThere is a deep pit.\n");
+            printf("Check room for items? 1 = yes, 0 = no\n");
+            scanf("%d", &choice);
+			
+            // If player checks room for items,
+			// they find rope needed to cross the pit
+            if (choice == 1) {
+                printf("You found a rope!\n");
+                printf("You use the rope to cross the pit safely.\n");
+                currentRoom = EXIT_CHAMBER;
+                stayInRoom = 0;
+
+			// If player doesn't check, they fall into the pit,
+			// but there is a chance to replay
+            } else if (choice == 0) {
+                printf("You fall into the pit!\n");
+                printf("Replay? 1 = yes, 0 = no\n");
+                scanf("%d", &choice);
+
+				// Replay returns player to the DARK CORRIDOR
+                if (choice == 1) {
+                    stayInRoom = 1;   
+
+				// Player chooses to quit
+                } else if (choice == 0) {
+                    printf("Goodbye!\n");
+                    gameOver = 1;
+                    stayInRoom = 0;    
+                }
+            }
+        }
+        break;
+    }
 
 case EXIT_CHAMBER: {
 
@@ -158,3 +196,4 @@ else {
 }
 return 0;
     }
+
