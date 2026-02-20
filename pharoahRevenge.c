@@ -14,6 +14,7 @@ int gameOver = 0;
 printf("\nYou are an archaeologist who one day wakes up in the 26th C.B.E. in the Pyramid of Giza.");
 printf("You are inside the tomb of Pharaoh Khufu, accidently disturbing his slumber. Your mission");
 printf("is to escape the tomb by avoiding deadly traps and unlocking ancient mechanisms before the Pharaoh enacts his revenge.\n");
+printf("----------------------------------\n");
 
 while (!gameOver && timeLeft > 0) {
 	switch(currentRoom) {
@@ -199,5 +200,6 @@ return 0;
 }
 }
 }
+
 
 
