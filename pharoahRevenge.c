@@ -11,9 +11,12 @@ while (playAgain == 1) {
 int currentRoom = KINGS_CHAMBER;
 int timeLeft = MAX_TIME;
 int gameOver = 0;
-printf("\nYou are an archaeologist who one day wakes up in the 26th C.B.E. in the Pyramid of Giza.");
-printf("You are inside the tomb of Pharaoh Khufu, accidently disturbing his slumber. Your mission");
-printf("is to escape the tomb by avoiding deadly traps and unlocking ancient mechanisms before the Pharaoh enacts his revenge.\n");
+	
+printf("\nYou are an archaeologist who one day wakes up in the 26th C.B.E. in the Pyramid of Giza.\n");
+printf("You are inside the tomb of Pharaoh Khufu, accidently disturbing his slumber.\n");
+printf("You must escape the tomb by navigating through The Kings Chamber, then to The Dark Corridor and finally The Exit Chamber.\n");
+printf("But beware the deadly traps and remember- you must escape before time runs out and the Pharaoh awakens enacting his revenge. \n");
+
 printf("----------------------------------\n");
 
 while (!gameOver && timeLeft > 0) {
@@ -47,6 +50,8 @@ while (!gameOver && timeLeft > 0) {
     case DARK_CORRIDOR: {
         int choice;
         int stayInRoom = 1;
+		
+		printf("----------------------------------\n");
 
 		// stayInRoom allows to replay if you fall into the pit
         while (stayInRoom) {
@@ -87,8 +92,9 @@ while (!gameOver && timeLeft > 0) {
 case EXIT_CHAMBER: {
 
     int choice;
-
-    printf("\nExit Chamber:\n");
+	
+	printf("----------------------------------\n");
+	printf("\nExit Chamber:\n");
 
     // Ask if player wants to search for the Ancient Key
     printf("Search for Ancient Key? 1 = yes 0 = no\n");
@@ -200,6 +206,7 @@ return 0;
 }
 }
 }
+
 
 
 
