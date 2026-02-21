@@ -21,30 +21,38 @@ printf("----------------------------------\n");
 
 while (!gameOver && timeLeft > 0) {
 	switch(currentRoom) {
-	case KINGS_CHAMBER: {
-	 int choice;
-	printf("Kings Chamber:\nYou are encapsulated in darkness.\n");
-	printf("Check inventory? 1 = yes 0 = no \n");
-    scanf("%d", &choice);
-    if(choice == 0){
-       printf("You did not check your inventory. You are unable use item.\n");
-       printf("You are unable to navigate in the darkness\n");
-       gameOver = 1;
-       break;
-    } else if(choice == 1){
-        printf("You have a torch. Light it? 1 = yes 0 = no \n");
-        scanf("%d", &choice);
+		
+	// =========== ROOM 1 - KINGS CHAMBER ============
 
-        if(choice == 0){
-            printf("You are unable to navigate in the darkness\n");
-            gameOver = 1;
-        } else if(choice ==1){
-            printf("You are able to navigate in the darkness\n");
-            printf("You make it out of the Kings Chambers\n"); 
-            currentRoom = DARK_CORRIDOR; 
-        }
-    }
-    break;    
+		case KINGS_CHAMBER: {
+			int choice;
+			printf("Kings Chamber:\nYou are encapsulated in darkness.\n");
+			printf("Do you want to explore the Chamber for useful items? 1 = yes 0 = no \n");
+		    scanf("%d", &choice);
+	
+			if(choice == 1){
+		        printf("You have a torch!\n");
+			}
+			else {
+			    printf("You did not check your inventory. You are unable use item.\n");
+			    printf("You are unable to navigate in the darkness.\n");
+			    gameOver = 1;
+			    break;
+			}
+			printf("Do you want to light the torch? 1 = yes 0 = no \n");
+			scanf("%d", &choice);
+				
+			if (choice == 1){
+				printf("You are able to navigate in the darkness.\n");
+	            printf("You make it out of the Kings Chambers.\n"); 
+	            currentRoom = DARK_CORRIDOR;                  
+	        }
+			else {
+				printf("You are unable to navigate in the darkness.\n");
+	            gameOver = 1;	
+	    }
+	    break;    
+	} 
 } 
 	// =========== ROOM 2 - DARK CORRIDOR ============
     case DARK_CORRIDOR: {
@@ -88,6 +96,7 @@ while (!gameOver && timeLeft > 0) {
         }
         break;
     }
+	// =========== ROOM 3 - EXIT CHAMBER ============
 
 case EXIT_CHAMBER: {
 
@@ -206,6 +215,7 @@ return 0;
 }
 }
 }
+
 
 
 
